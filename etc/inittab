@@ -9,9 +9,8 @@
 #::once:/bin/mount -t vfat -r /dev/mmcblk0p1 /boot
 
 # Networking
-#::once:/sbin/ifup -a
-#::once:/sbin/ntpd -p 192.168.1.2
-#::respawn:/bin/sh /root/start_worker.sh
+# now run any rc scripts
+::sysinit:/sbin/ifup -a
 ::once:/bin/sh /root/boot.sh
 
 # Pseudo-TTYs
