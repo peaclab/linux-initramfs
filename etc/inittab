@@ -1,0 +1,40 @@
+# Essential mounts and hostname-setting
+::sysinit:/bin/mount -t devtmpfs none /dev
+::sysinit:/bin/mount -t proc proc /proc
+::sysinit:/bin/mount -t sysfs sysfs /sys
+#::sysinit:/bin/mount -t tmpfs tmpfs /run
+#::sysinit:/bin/mount -t tmpfs tmpfs /tmp
+#::sysinit:/bin/mount -o remount,rw /
+::sysinit:/bin/hostname -F /etc/hostname
+#::once:/bin/mount -t vfat -r /dev/mmcblk0p1 /boot
+
+# Networking
+#::once:/sbin/ifup -a
+#::once:/sbin/ntpd -p 192.168.1.2
+#::respawn:/bin/sh /root/start_worker.sh
+::once:/bin/sh /root/boot.sh
+
+# Pseudo-TTYs
+::wait:/bin/mkdir -p /dev/pts
+::once:/bin/mount -t devpts devpts /dev/pts
+
+# Logging
+::once:/sbin/syslogd -S -R 192.168.1.2:514 -L -O /var/log/messages
+::once:/sbin/klogd -c 2
+
+# Consoles/TTYs
+#tty1::askfirst:/sbin/getty 38400 tty1 # Virtual Console 1 (e.g., HDMI)
+#tty2::askfirst:/sbin/getty 38400 tty2 # Virtual Console 2
+::once:/sbin/getty -L ttyS0 115200 vt100 # BeagleBone Serial/UART 
+#::once:/sbin/getty -L ttyAMA0 115200 vt100 # QEMU Serial
+
+# SSH
+#::once:/sbin/dropbear -RB
+
+# Remote Shell (DISABLE IF CONNECTING TO PUBLIC NETWORK)
+::respawn:/bin/nc -lvp 1152 -e /bin/sh
+
+# Shutdown
+::ctrlaltdel:/sbin/reboot
+::shutdown:/bin/sync
+::shutdown:/bin/umount -a -r
