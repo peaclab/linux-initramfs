@@ -1,2 +1,3 @@
 # linux-initramfs
-A Busybox-based filesystem intended for use as an initramfs with linux-minimal and MicroFaaS
+
+#REMOVE IP COMMAND FROM KERNEL COMMAND LINE SCRIPT 
