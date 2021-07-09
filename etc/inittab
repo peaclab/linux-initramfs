@@ -10,7 +10,7 @@
 
 # Networking
 # now run any rc scripts
-#::sysinit:/sbin/ifup -a
+::sysinit:/sbin/ifup -a
 ::once:/bin/sh /root/boot.sh
 
 # Pseudo-TTYs
