@@ -1,4 +1,7 @@
-import usocket as socket
+try:
+	import usocket as socket
+except:
+	import socket
 
 s = socket.socket()
 ai = socket.getaddrinfo('192.168.1.200', 80)[0][-1]
