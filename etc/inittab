@@ -11,7 +11,7 @@
 # Networking
 #::once:/sbin/ifup -a
 #::once:/sbin/ntpd -p 192.168.1.2
-#::respawn:/bin/sh /root/start_worker.sh
+::respawn:/bin/sh /root/MicroFaaS/start_worker.sh
 ::once:/bin/sh /root/boot.sh
 
 # Pseudo-TTYs
