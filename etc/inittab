@@ -11,8 +11,8 @@
 # Networking
 #::once:/sbin/ifup -a
 #::once:/sbin/ntpd -p 192.168.1.2
-::respawn:/bin/sh /root/MicroFaaS/start_worker.sh
-::once:/bin/sh /root/boot.sh
+#::once:/bin/sh /root/boot.sh 
+::once:/bin/sh /root/MicroFaaS/start_worker.sh > /dev/ttyS0
 
 # Pseudo-TTYs
 ::wait:/bin/mkdir -p /dev/pts
