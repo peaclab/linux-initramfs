@@ -1,3 +1,6 @@
 [submodule "root/MicroFaaS"]
 	path = root/MicroFaaS
 	url = git@github.com:peaclab/MicroFaaS.git
+[submodule "root/MicroFaaS-worker"]
+	path = root/MicroFaaS-worker
+	url = git@github.com:peaclab/MicroFaaS-worker.git
